@@ -22,7 +22,7 @@ The app provides a **user-friendly** interface to interact with Kaggle's dataset
      - `/download/<path:dataset_ref>`: Download the selected dataset.
 
 2. **`kaggle_connect.py`:**
-   - Handles interaction with the Kaggle API.
+   - Handles interaction with the `Kaggle API`.
    - Functions:
      - `search_datasets(search_term)`: Searches Kaggle for datasets matching the provided term.
      - `download_dataset(dataset_ref)`: Downloads a dataset by its reference.
