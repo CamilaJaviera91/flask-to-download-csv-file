@@ -15,7 +15,7 @@ The app provides a **user-friendly** interface to interact with Kaggle's dataset
 ### Python Scripts:
 
 1. **`App.py`:**
-   - The main Flask application that handles routes and renders templates.
+   - The main `Flask` application that handles routes and renders templates.
    - Routes:
      - `/`: Home page.
      - `/search`: Search for datasets.
