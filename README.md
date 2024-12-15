@@ -5,7 +5,7 @@ This is a **Flask-based web application** that allows users to **search for data
 ## Features:
 
 - **Search for Datasets:** Enter a `search` term to find **datasets** hosted on **Kaggle**.
-- **View Search Results:** See a list of datasets that match your query, along with their titles.
+- **View Search Results:** See a **list of datasets** that match your query, along with their titles.
 - **Download Datasets:** Download selected datasets as `.zip` files directly from the application.
 
 ## Files in the Repository:
