@@ -112,4 +112,4 @@ def kaggle_connect(stdscr):
         stdscr.getch()
         return None
 #To test we type "Boston Housing Dataset" and we select option 7 (willianleite/boston-housing-dataset)    
-curses.wrapper(kaggle_connect)
+#curses.wrapper(kaggle_connect)
