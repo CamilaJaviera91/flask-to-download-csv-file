@@ -73,22 +73,12 @@ def kaggle_connect(stdscr):
             return None
 
         # Destination folder for the download
-        stdscr.addstr("\nEnter the name of the new folder to store the dataset: ")
-        stdscr.refresh()
-        curses.echo()
-        new_folder = stdscr.getstr().decode('utf-8').strip()
-        curses.noecho()
-        if not new_folder:
-            stdscr.addstr("Folder name cannot be empty. Exiting.")
-
-            stdscr.refresh()
-            stdscr.getch()
-            return None
-        
-        download_path = base_folder / new_folder
+        fixed_folder_name = "dataset"  # Nombre fijo del directorio
+        download_path = base_folder / fixed_folder_name
 
         # Create the folder if it doesn't exist
-        download_path.mkdir(parents=True, exist_ok=True)
+        if not download_path.exists():
+            download_path.mkdir(parents=True, exist_ok=True)
 
         # Download the dataset and unzip it in the specified folder
         stdscr.addstr("\nDownloading dataset...")
@@ -122,4 +112,4 @@ def kaggle_connect(stdscr):
         stdscr.getch()
         return None
 #To test we type "Boston Housing Dataset" and we select option 7 (willianleite/boston-housing-dataset)    
-#curses.wrapper(kaggle_connect)
+curses.wrapper(kaggle_connect)
