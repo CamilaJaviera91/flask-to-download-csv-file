@@ -7,7 +7,7 @@ from pathlib import Path
 def kaggle_connect(search_term):
     try:
         # "Download" base path
-        base_folder = Path("./")
+        base_folder = Path("./dataset")
 
         # Initialize the API and authenticate
         api = KaggleApi()
