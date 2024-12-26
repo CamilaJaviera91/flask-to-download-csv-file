@@ -71,7 +71,7 @@ This is a Flask-based web application that allows users to search for datasets o
 
 3. Use the application to search for datasets, view results, and download datasets.
 
-### This is how the application will look after using the code.
+### This is how the application will look after using the code:
 
 1. After accessing `http://127.0.0.1:5000/`, you should see a page like the one shown below, and click the **"Search for Datasets"** button.
 ![App1](./images/0.png)
