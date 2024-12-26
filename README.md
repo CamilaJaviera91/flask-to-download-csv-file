@@ -8,7 +8,7 @@ This is a Flask-based web application that allows users to search for datasets o
 - **View Search Results**: See a list of datasets that match your query, along with their titles.
 - **Download Datasets**: Download selected datasets as `.zip` files directly from the application.
 
-## Files in the Repository
+## Files in the Repository:
 
 ### Python Scripts:
 
