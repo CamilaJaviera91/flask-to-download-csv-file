@@ -2,7 +2,7 @@
 
 This is a Flask-based web application that allows users to search for datasets on Kaggle and download them directly. The app provides a user-friendly interface to interact with Kaggle's dataset repository, making it easier to find and retrieve datasets.
 
-## Features
+## Features:
 
 - **Search for Datasets**: Enter a search term to find datasets hosted on Kaggle.
 - **View Search Results**: See a list of datasets that match your query, along with their titles.
