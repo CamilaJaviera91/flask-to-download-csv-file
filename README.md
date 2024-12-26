@@ -57,7 +57,7 @@ This is a Flask-based web application that allows users to search for datasets o
 3. Set up Kaggle API credentials:
    - Place your `kaggle.json` file in the `~/.kaggle/` directory or in the root of the project.
 
-## Usage
+## Usage:
 
 1. Run the Flask application:
    ```
