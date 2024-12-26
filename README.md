@@ -105,7 +105,7 @@ This is a Flask-based web application that allows users to search for datasets o
 - Ensure that the Kaggle API is properly authenticated to use this application.
 - The downloaded datasets are saved in the `dataset/` directory as `.zip` files.
 
-## Documentation
+## Documentation:
 
 - [Kaggle API Documentation](https://github.com/Kaggle/kaggle-api)
 - [Flask Documentation](https://flask.palletsprojects.com/en/stable/)
