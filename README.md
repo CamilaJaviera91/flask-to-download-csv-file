@@ -86,7 +86,7 @@ This is a Flask-based web application that allows users to search for datasets o
 6. Finally, it shows us the home page with a small message telling us the last .zip file we downloaded.
 ![App6](./images/6.png)
 
-## Project Structure
+## Project Structure:
 
 ```
 .
