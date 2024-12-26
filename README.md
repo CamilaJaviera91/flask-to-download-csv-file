@@ -10,7 +10,7 @@ This is a Flask-based web application that allows users to search for datasets o
 
 ## Files in the Repository
 
-### Python Scripts 
+### Python Scripts:
 
 1. **`App.py`:**
    - The main Flask application that handles routes and renders templates.
