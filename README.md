@@ -25,7 +25,7 @@ This is a Flask-based web application that allows users to search for datasets o
      - `search_datasets(search_term)`: Searches Kaggle for datasets matching the provided term.
      - `download_dataset(dataset_ref)`: Downloads a dataset by its reference.
 
-### HTML Templates
+### HTML Templates:
 
 1. **`index.html`:**
    - Home page with a welcome message and a link to the search page.
