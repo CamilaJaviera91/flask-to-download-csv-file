@@ -33,7 +33,7 @@ This is a Flask-based web application that allows users to search for datasets o
 2. **`search.html`:**
    - A form to input a search term for finding datasets.
 
-3. **`search_results.html`**
+3. **`search_results.html`:**
    - Displays the search results and provides download links for each dataset.
 
 ## Prerequisites
