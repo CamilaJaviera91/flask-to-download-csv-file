@@ -27,7 +27,7 @@ This is a Flask-based web application that allows users to search for datasets o
 
 ### HTML Templates
 
-1. **`index.html`**
+1. **`index.html`:**
    - Home page with a welcome message and a link to the search page.
 
 2. **`search.html`**
