@@ -38,7 +38,7 @@ This is a Flask-based web application that allows users to search for datasets o
 
 ## Prerequisites
 
-- Python 3.7+
+- Python 3.8+
 - Kaggle API credentials (download your `kaggle.json` from Kaggle and place it in `~/.kaggle/` or the project root).
 
 ## Installation
