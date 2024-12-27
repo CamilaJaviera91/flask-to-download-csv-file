@@ -60,7 +60,7 @@ This is a Flask-based web application that allows users to search for datasets o
 ## Usage
 
 1. Run the Flask application:
-   ```bash
+   ```
    python App.py
    ```
 
