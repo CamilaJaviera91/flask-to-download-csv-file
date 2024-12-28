@@ -19,7 +19,7 @@ This is a Flask-based web application that allows users to search for datasets o
      - `/search`: Search for datasets.
      - `/download/<path:dataset_ref>`: Download the selected dataset.
 
-2. **`kaggle_connect.py`**
+2. **`kaggle_connect.py`:**
    - Handles interaction with the Kaggle API.
    - Functions:
      - `search_datasets(search_term)`: Searches Kaggle for datasets matching the provided term.
