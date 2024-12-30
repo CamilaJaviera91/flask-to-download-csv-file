@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
 </head>
 <body>
     <h1>Search Results for "{{ search_term }}"</h1>
     {% if datasets %}
         <ul>
-        {% for dataset in datasets %}
-            <li>
-                <strong>{{ dataset.title }}</strong>
-                (<a href="{{ url_for('download', dataset_ref=dataset.ref) }}">Download</a>)
-            </li>
-        {% endfor %}
+            {% for dataset in datasets %}
+                <li>
+                    <strong>{{ dataset.title }}</strong>
+                    <a href="{{ url_for('download', dataset_ref=dataset['ref'] | urlencode) }}">Download</a>
+                </li>
+            {% endfor %}
         </ul>
     {% else %}
         <p>No datasets found.</p>
     {% endif %}
-    <a href="{{ url_for('search') }}">Back to Search</a>
+    <a href="{{ url_for('index') }}">Back to Home</a>
 </body>
 </html>
