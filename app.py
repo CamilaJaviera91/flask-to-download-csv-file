@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from urllib.parse import quote, unquote
 from kaggle_connect import search_datasets, download_dataset
 
 app = Flask(__name__)
@@ -27,8 +28,11 @@ def search():
 
     return render_template('search.html')
 
-@app.route('/download/<dataset_ref>')
+@app.route('/download/<path:dataset_ref>')
 def download(dataset_ref):
+    # Decode the dataset reference
+    dataset_ref = unquote(dataset_ref)
+
     # Download the selected dataset
     message = download_dataset(dataset_ref)
     flash(message)
