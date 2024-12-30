@@ -10,9 +10,9 @@ def search_datasets(search_term):
 
         # Search for datasets
         datasets = api.dataset_list(search=search_term)
-        return [{"ref": d.ref, "title": d.title} for d in datasets]  # Return a list of refs and titles
+        return [{"ref": d.ref, "title": d.title} for d in datasets], None  # Return a list of refs and titles
     except Exception as e:
-        return None, f"An error occurred: {e}"
+        return [], f"An error occurred: {e}"  # Return an empty list and the error message
 
 def download_dataset(dataset_ref, download_path='./dataset'):
     """Download the selected dataset from Kaggle."""
