@@ -1,13 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from kaggle_connect import kaggle_connect  # Importa la función desde kaggle_connect.py
-from pathlib import Path
+from kaggle_connect import search_datasets, download_dataset
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Necesario para usar flash
-
-# Ruta para almacenar datasets
-UPLOAD_FOLDER = Path('./dataset')
-UPLOAD_FOLDER.mkdir(exist_ok=True)
+app.secret_key = 'your_secret_key'
 
 @app.route('/')
 def index():
@@ -18,20 +13,26 @@ def search():
     if request.method == 'POST':
         search_term = request.form.get('search_term')
         if not search_term:
-            flash('Por favor, ingrese un término de búsqueda.')
+            flash('Please enter a search term.')
             return redirect(url_for('search'))
 
-        # Buscar datasets usando la función kaggle_connect
-        df, error = kaggle_connect(search_term)
+        # Search datasets
+        datasets, error = search_datasets(search_term)
         if error:
             flash(error)
             return redirect(url_for('search'))
 
-        # Si no hubo error, mostrar vista previa del dataset
-        return render_template('index.html', data_preview=df.head().to_html())
+        # Render the search results
+        return render_template('search_results.html', datasets=datasets, search_term=search_term)
 
-    # Renderizar el formulario si es una solicitud GET
     return render_template('search.html')
+
+@app.route('/download/<dataset_ref>')
+def download(dataset_ref):
+    # Download the selected dataset
+    message = download_dataset(dataset_ref)
+    flash(message)
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
