@@ -1,40 +1,37 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file, flash
-from kaggle_connect import kaggle_connect
+from flask import Flask, render_template, request, redirect, url_for, flash
+from kaggle_connect import kaggle_connect  # Importa la función desde kaggle_connect.py
 from pathlib import Path
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = 'your_secret_key'  # Necesario para usar flash
 
-@app.route('/', methods=['GET', 'POST'])
+# Ruta para almacenar datasets
+UPLOAD_FOLDER = Path('./dataset')
+UPLOAD_FOLDER.mkdir(exist_ok=True)
+
+@app.route('/')
 def index():
-    if request.method == 'POST':
-        search_term = request.form.get('search_term')
-
-        if not search_term:
-            flash('Please provide a search term.')
-            return redirect(url_for('index'))
-
-        # Call kaggle_connect to download the dataset
-        csv_file, error = kaggle_connect(search_term)
-        if error:
-            flash(error)
-            return redirect(url_for('index'))
-
-        # Store the file path in the session for download
-        file_path = csv_file.resolve()  # Get the absolute path
-        return render_template('index.html', download_url=url_for('download_file', file_path=str(file_path)))
-
     return render_template('index.html')
 
-@app.route('/download', methods=['GET'])
-def download_file():
-    file_path = request.args.get('file_path')
-    if not file_path or not Path(file_path).exists():
-        flash('The requested file does not exist.')
-        return redirect(url_for('index'))
-    
-    # Send the file to the user for download
-    return send_file(file_path, as_attachment=True)
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        search_term = request.form.get('search_term')
+        if not search_term:
+            flash('Por favor, ingrese un término de búsqueda.')
+            return redirect(url_for('search'))
+
+        # Buscar datasets usando la función kaggle_connect
+        df, error = kaggle_connect(search_term)
+        if error:
+            flash(error)
+            return redirect(url_for('search'))
+
+        # Si no hubo error, mostrar vista previa del dataset
+        return render_template('index.html', data_preview=df.head().to_html())
+
+    # Renderizar el formulario si es una solicitud GET
+    return render_template('search.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

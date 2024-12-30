@@ -3,28 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaggle Dataset Downloader</title>
+    <title>Kaggle Dataset Viewer</title>
 </head>
 <body>
-    <h1>Kaggle Dataset Downloader</h1>
-    <form method="POST">
-        <label for="search_term">Search Term:</label>
-        <input type="text" id="search_term" name="search_term" required>
-        <button type="submit">Search & Download</button>
-    </form>
-
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    {% endwith %}
-
-    {% if download_url %}
-        <p><a href="{{ download_url }}">Download the CSV file</a></p>
+    <h1>Welcome to Kaggle Dataset Viewer</h1>
+    <a href="{{ url_for('search') }}">Search Kaggle Datasets</a>
+    {% if data_preview %}
+        <h2>Dataset Preview</h2>
+        {{ data_preview | safe }}
     {% endif %}
 </body>
 </html>
