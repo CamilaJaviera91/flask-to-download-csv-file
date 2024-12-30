@@ -22,7 +22,7 @@ def download_dataset(dataset_ref):
 
         # Destination folder
         base_folder = Path('./dataset')
-        base_folder.mkdir(exist_ok=True)
+        base_folder.mkdir(exist_ok=True, parents=True)
 
         # Download and unzip
         api.dataset_download_files(dataset_ref, path=str(base_folder), unzip=True)
