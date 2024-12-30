@@ -1,47 +1,32 @@
-# kaggle_connect.py
-
 from kaggle.api.kaggle_api_extended import KaggleApi
-import pandas as pd
 from pathlib import Path
 
-def kaggle_connect(search_term):
+def search_datasets(search_term):
+    """Search for datasets on Kaggle by term."""
     try:
-        # "Download" base path
-        base_folder = Path("./dataset")
-
         # Initialize the API and authenticate
         api = KaggleApi()
         api.authenticate()
 
-        # List datasets related to the search term
+        # Search for datasets
         datasets = api.dataset_list(search=search_term)
-        datasets = list(datasets)  # Convert to list for indexing
-        if not datasets:
-            return None, "No datasets found for the search term."
-        
-        # Choose the first dataset (for simplicity)
-        data_ref = datasets[0].ref
-
-        # Destination folder for the download
-        fixed_folder_name = "dataset"  # Nombre fijo del directorio
-        download_path = base_folder / fixed_folder_name
-
-        # Create the folder if it doesn't exist
-        if not download_path.exists():
-            download_path.mkdir(parents=True, exist_ok=True)
-
-        # Download the dataset and unzip it in the specified folder
-        api.dataset_download_files(data_ref, path=str(download_path), unzip=True)
-
-        # List all CSV files in the download directory
-        csv_files = list(download_path.glob('*.csv'))
-        if not csv_files:
-            return None, "No CSV files found in the dataset."
-        
-        # Load the dataset into a DataFrame
-        df = pd.read_csv(csv_files[0])
-
-        return df, None
-    
+        return [{"ref": d.ref, "title": d.title} for d in datasets]  # Return a list of refs and titles
     except Exception as e:
         return None, f"An error occurred: {e}"
+
+def download_dataset(dataset_ref, download_path='./dataset'):
+    """Download the selected dataset from Kaggle."""
+    try:
+        # Initialize the API and authenticate
+        api = KaggleApi()
+        api.authenticate()
+
+        # Set download folder
+        download_path = Path(download_path)
+        download_path.mkdir(parents=True, exist_ok=True)
+
+        # Download and unzip dataset
+        api.dataset_download_files(dataset_ref, path=str(download_path), unzip=True)
+        return f"Dataset downloaded successfully to {download_path}"
+    except Exception as e:
+        return f"An error occurred: {e}"
