@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, send_file
 from urllib.parse import quote, unquote
 from kaggle_connect import search_datasets, download_dataset
 
@@ -36,7 +36,7 @@ def download(dataset_ref):
     # Download the selected dataset
     message = download_dataset(dataset_ref)
     flash(message)
-    return redirect(url_for('index'))
+    return send_file(f'./dataset/{message}.zip', as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
