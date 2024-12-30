@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaggle Dataset Viewer</title>
+    <title>Dataset Search</title>
 </head>
 <body>
-    <h1>Welcome to Kaggle Dataset Viewer</h1>
-    <a href="{{ url_for('search') }}">Search Kaggle Datasets</a>
+    <h1>Welcome to Dataset Search</h1>
+    <a href="{{ url_for('search') }}">Search for Datasets</a>
     {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     {% endwith %}
 </body>
 </html>
