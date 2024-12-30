@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results for "{{ search_term }}"</h1>
+    <ul>
+    {% for dataset in datasets %}
+        <li>
+            <strong>{{ dataset.title }}</strong>
+            <a href="{{ url_for('download', dataset_ref=dataset.ref) }}">Download</a>
+        </li>
+    {% endfor %}
+    </ul>
+    <a href="{{ url_for('search') }}">Search Again</a>
+</body>
+</html>
