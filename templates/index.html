@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descargar CSV</title>
+    <title>Kaggle Dataset Viewer</title>
 </head>
 <body>
-    <h1>Descargar archivo CSV</h1>
-    <p>Haz clic en el botón para descargar el archivo CSV.</p>
-    <a href="/download">
-        <button>Descargar CSV</button>
-    </a>
+    <h1>Welcome to Kaggle Dataset Viewer</h1>
+    <a href="{{ url_for('search') }}">Search Kaggle Datasets</a>
+    {% if data_preview %}
+        <h2>Dataset Preview</h2>
+        {{ data_preview | safe }}
+    {% endif %}
 </body>
 </html>
