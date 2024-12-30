@@ -22,10 +22,11 @@ def download_dataset(dataset_ref):
 
         # Destination folder
         base_folder = Path('./dataset')
-        base_folder.mkdir(exist_ok=True, parents=True)
+        base_folder.mkdir(exist_ok=True, parents=True)  
 
         # Download and unzip
-        api.dataset_download_files(dataset_ref, path=str(base_folder), unzip=True)
-        return f"Dataset '{dataset_ref}' downloaded successfully!"
+        api.dataset_download_files(dataset_ref, path=str(base_folder), unzip=False)
+        s = dataset_ref.split("/")
+        return s[1]
     except Exception as e:
         return f"Failed to download dataset: {e}"
