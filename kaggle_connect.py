@@ -10,23 +10,22 @@ def search_datasets(search_term):
 
         # Search for datasets
         datasets = api.dataset_list(search=search_term)
-        return [{"ref": d.ref, "title": d.title} for d in datasets]  # Return a list of refs and titles
+        return [{"ref": d.ref, "title": d.title} for d in datasets], None  # Return a list of refs and titles
     except Exception as e:
-        return None, f"An error occurred: {e}"
+        return [], f"An error occurred: {e}"  # Return an empty list and the error message
 
-def download_dataset(dataset_ref, download_path='./dataset'):
-    """Download the selected dataset from Kaggle."""
+def download_dataset(dataset_ref):
+    """Download a dataset by its reference."""
     try:
-        # Initialize the API and authenticate
         api = KaggleApi()
         api.authenticate()
 
-        # Set download folder
-        download_path = Path(download_path)
-        download_path.mkdir(parents=True, exist_ok=True)
+        # Destination folder
+        base_folder = Path('./dataset')
+        base_folder.mkdir(exist_ok=True, parents=True)
 
-        # Download and unzip dataset
-        api.dataset_download_files(dataset_ref, path=str(download_path), unzip=True)
-        return f"Dataset downloaded successfully to {download_path}"
+        # Download and unzip
+        api.dataset_download_files(dataset_ref, path=str(base_folder), unzip=True)
+        return f"Dataset '{dataset_ref}' downloaded successfully!"
     except Exception as e:
-        return f"An error occurred: {e}"
+        return f"Failed to download dataset: {e}"
