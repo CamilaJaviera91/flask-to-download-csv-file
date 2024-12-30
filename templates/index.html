@@ -8,9 +8,14 @@
 <body>
     <h1>Welcome to Kaggle Dataset Viewer</h1>
     <a href="{{ url_for('search') }}">Search Kaggle Datasets</a>
-    {% if data_preview %}
-        <h2>Dataset Preview</h2>
-        {{ data_preview | safe }}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
     {% endif %}
+    {% endwith %}
 </body>
 </html>
