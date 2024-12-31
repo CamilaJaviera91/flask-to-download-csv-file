@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Welcome to Dataset Search</h1>
+    
+    <h3>This application will help you download any .zip file from Kaggle.</h3>
+
     <a href="{{ url_for('search') }}">Search for Datasets</a>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
