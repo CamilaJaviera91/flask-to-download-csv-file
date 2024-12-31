@@ -97,3 +97,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## Acknowledgments
 
 - [Kaggle API Documentation](https://github.com/Kaggle/kaggle-api)
+- [Flask Documentation](https://flask.palletsprojects.com/en/stable/)
