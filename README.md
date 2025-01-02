@@ -71,6 +71,21 @@ This is a Flask-based web application that allows users to search for datasets o
 
 3. Use the application to search for datasets, view results, and download datasets.
 
+### This is how the application will look after using the code.
+
+1. After accessing `http://127.0.0.1:5000/`, you should see a page like the one shown below, and click the **"Search for Datasets"** button.
+![App1](./images/0.png)
+2. Then, after selecting **"Search for Datasets"**. We enter the term we want to find. In this case, we are using the example **"College"**."
+![App2](./images/2.png)
+3. We will see a list of **Datasets** from which we will select one. In this case we are going to select the first dataset **"College Basketball Dataset"**.
+![App3](./images/3.png)
+4. The system will save the .zip file of the selected dataset into the **"Downloads folder"**.
+![App4](./images/4.png)
+5. After selecting the dataset we want, we can go back to the beginning to download another dataset.
+![App5](./images/5.png)
+6. Finally, it shows us the home page with a small message telling us the last .zip file we downloaded.
+![App6](./images/6.png)
+
 ## Project Structure
 
 ```
@@ -90,11 +105,7 @@ This is a Flask-based web application that allows users to search for datasets o
 - Ensure that the Kaggle API is properly authenticated to use this application.
 - The downloaded datasets are saved in the `dataset/` directory as `.zip` files.
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Acknowledgments
+## Documentation
 
 - [Kaggle API Documentation](https://github.com/Kaggle/kaggle-api)
 - [Flask Documentation](https://flask.palletsprojects.com/en/stable/)
